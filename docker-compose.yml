@@ -1,0 +1,18 @@
+
+# Configuración de servidores
+
+services:
+  
+  # el nombre del servicio
+  db:
+    image: mysql:8.4.3
+    container_name: bd-proyecto
+    environment:
+      - MYSQL_DATABASE=proyecto
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=proyecto
+      - MYSQL_PASSWORD=secret
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
