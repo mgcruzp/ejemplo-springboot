@@ -1,21 +1,37 @@
 package com.jorgito.demo.modelo;
 
+import java.sql.Date;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "publicaciones")
 public class Publicacion {
     @Id  
+    @GeneratedValue
     long id; // id pa la normalizacion 
 
     @Column(unique = true, nullable = true)
     String informacion;
 
     @Column(unique = true, nullable = true)
-    String fecha ;
+    @Temporal(TemporalType.TIMESTAMP)
+    Date fecha ;
     
+    @OneToMany(mappedBy = "publicacion")
+    Usuario user;
 
+    @OneToMany(mappedBy = "likes", cascade = CascadeType.REMOVE)
+    List<LikePublicaciones> likesRecibidos;
 }
