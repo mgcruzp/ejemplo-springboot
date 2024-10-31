@@ -22,10 +22,10 @@ public class Publicacion {
     @GeneratedValue
     long id; // id pa la normalizacion 
 
-    @Column(unique = true, nullable = true)
+    
     String informacion;
 
-    @Column(unique = true, nullable = true)
+
     @Temporal(TemporalType.TIMESTAMP)
     Date fecha ;
     
