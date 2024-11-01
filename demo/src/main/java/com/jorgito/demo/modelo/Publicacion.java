@@ -37,4 +37,10 @@ public class Publicacion {
 
     @OneToMany(mappedBy = "likeado", cascade = CascadeType.REMOVE)
     List<LikePublicaciones> likesRecibidos;
+
+    @OneToMany(mappedBy = "publicacion", cascade = CascadeType.REMOVE)
+    List<Video> videos;
+
+    @OneToMany(mappedBy = "publicacion", cascade = CascadeType.REMOVE)
+    List<Foto> fotos;
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.support.RegisteredBean.InstantiationDescriptor;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "comunidad")
+@Table(name = "comunidades")
 public class Comunidad {
 
     @Id
@@ -33,9 +34,9 @@ public class Comunidad {
     String descripcion;
 
     
-    @OneToMany(mappedBy = "comunidad")
+    @OneToMany(mappedBy = "comunidad", cascade = CascadeType.REMOVE)
     List<Inscripciones> inscritos;
 
-    @OneToMany(mappedBy = "comunidad")
+    @OneToMany(mappedBy = "comunidad", cascade = CascadeType.REMOVE)
     List<Publicacion> publicaciones;
 }

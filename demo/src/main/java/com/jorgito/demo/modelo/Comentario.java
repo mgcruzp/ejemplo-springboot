@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.swing.event.ListSelectionEvent;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "comentario")
+@Table(name = "comentarios")
 public class Comentario {
 
     @Id
@@ -38,10 +39,10 @@ public class Comentario {
     @ManyToOne
     Comentario comentarioPadre;
 
-    @OneToMany(mappedBy = "comentarioPadre")
+    @OneToMany(mappedBy = "comentarioPadre", cascade = CascadeType.REMOVE)
     List<Comentario> comentarios;
 
-    @OneToMany(mappedBy = "comentario")
+    @OneToMany(mappedBy = "comentario", cascade = CascadeType.REMOVE)
     List<LikeComentarios> likes;
 
 

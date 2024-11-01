@@ -1,5 +1,6 @@
 package com.jorgito.demo.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -9,15 +10,12 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "likesComentarios")
-public class LikeComentarios {
+@Table(name = "fotos")
+public class Foto {
     @Id
     @GeneratedValue
     long id;
 
     @ManyToOne
-    Usuario usuario;
-
-    @ManyToOne
-    Comentario comentario;
+    Publicacion publicacion;
 }
