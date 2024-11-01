@@ -2,7 +2,7 @@ package com.jorgito.demo.modelo;
 
 import java.util.List;
 
-import org.springframework.beans.factory.support.RegisteredBean.InstantiationDescriptor;
+import javax.swing.event.ListSelectionEvent;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,11 +13,10 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-
 @Entity
 @Data
-@Table(name = "comunidad")
-public class Comunidad {
+@Table(name = "comentario")
+public class Comentario {
 
     @Id
     @GeneratedValue
@@ -26,16 +25,24 @@ public class Comunidad {
     @Column(unique = false, nullable = false)
     String fecha ;
 
-    @Column(unique = false, nullable = false)
-    String nombre;
 
     @Column(unique = false, nullable = true)
     String descripcion;
 
-    
-    @OneToMany(mappedBy = "comunidad")
-    List<Inscripciones> inscritos;
+    @ManyToOne
+    Publicacion publicacion;
 
-    @OneToMany(mappedBy = "comunidad")
-    List<Publicacion> publicaciones;
+    @ManyToOne
+    Usuario autor;
+
+    @ManyToOne
+    Comentario comentarioPadre;
+
+    @OneToMany(mappedBy = "comentarioPadre")
+    List<Comentario> comentarios;
+
+    //List<LikeComentarios> likes;
+
+
+
 }
