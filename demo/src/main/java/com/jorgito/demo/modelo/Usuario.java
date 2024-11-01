@@ -21,18 +21,19 @@ public class Usuario {
     @GeneratedValue
     Long id; // se usa un id para la normalizacion ya que las tablas se basan segun las clases
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     String email;
 
     
     String nombre;
 
-    
+    @Column(unique = false, nullable = true)
     String apellido;
 
     
     int edad;
 
+    @Column(unique = true, nullable = false)
     int teléfono;
 
     @OneToMany(mappedBy = "autor")
