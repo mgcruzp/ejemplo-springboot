@@ -48,4 +48,7 @@ public class Usuario {
     @OneToMany(mappedBy = "autor", cascade = CascadeType.REMOVE)
     List<Comentario> comentarios;
 
+    @OneToMany(mappedBy = "usuario")
+    List<LikeComentarios> likesComentarios;
+
 }

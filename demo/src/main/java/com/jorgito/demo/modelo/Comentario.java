@@ -41,7 +41,8 @@ public class Comentario {
     @OneToMany(mappedBy = "comentarioPadre")
     List<Comentario> comentarios;
 
-    //List<LikeComentarios> likes;
+    @OneToMany(mappedBy = "comentario")
+    List<LikeComentarios> likes;
 
 
 
