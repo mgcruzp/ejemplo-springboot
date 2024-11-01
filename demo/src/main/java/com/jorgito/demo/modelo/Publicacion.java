@@ -8,6 +8,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -29,9 +30,9 @@ public class Publicacion {
     @Temporal(TemporalType.TIMESTAMP)
     Date fecha ;
     
-    @OneToMany(mappedBy = "publicacion")
+    @ManyToOne
     Usuario user;
 
-    @OneToMany(mappedBy = "likes", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "likeado", cascade = CascadeType.REMOVE)
     List<LikePublicaciones> likesRecibidos;
 }

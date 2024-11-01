@@ -34,10 +34,9 @@ public class Usuario {
 
     int teléfono;
 
-    @OneToMany(mappedBy = "autor", cascade = CascadeType.REMOVE)
     List<Publicacion> publicaciones;
 
-    @OneToMany(mappedBy = "likesDados", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "dadorLike", cascade = CascadeType.REMOVE)
     List<LikePublicaciones> likesDados;
     
 }
