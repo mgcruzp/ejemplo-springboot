@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Usuario")
+@Table(name = "usuarios")
 public class Usuario {
 
     @Id
@@ -36,7 +36,10 @@ public class Usuario {
     @Column(unique = true, nullable = false)
     int teléfono;
 
-    @OneToMany(mappedBy = "autor")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+    List<Inscripciones> inscripciones;
+
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.REMOVE)
     List<Publicacion> publicaciones;
 
     @OneToMany(mappedBy = "dadorLike", cascade = CascadeType.REMOVE)

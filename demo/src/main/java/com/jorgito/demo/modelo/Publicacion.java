@@ -32,6 +32,7 @@ public class Publicacion {
     @ManyToOne
     Comunidad comunidad;
 
+    
     @OneToMany(mappedBy = "likeado", cascade = CascadeType.REMOVE)
     List<LikePublicaciones> likesRecibidos;
 }
