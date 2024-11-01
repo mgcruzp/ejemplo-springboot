@@ -1,18 +1,15 @@
 package com.jorgito.demo.modelo;
 
-import java.sql.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
@@ -26,12 +23,11 @@ public class Publicacion {
     
     String informacion;
 
-
-    @Temporal(TemporalType.TIMESTAMP)
-    Date fecha ;
+    
+    String fecha ;
     
     @ManyToOne
-    Usuario user;
+    Usuario autor;
 
     @OneToMany(mappedBy = "likeado", cascade = CascadeType.REMOVE)
     List<LikePublicaciones> likesRecibidos;
