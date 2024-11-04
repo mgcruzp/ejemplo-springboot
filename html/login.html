@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Iniciar Sesión - U-LIFE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    body, h1, h2, h3, h4, h5 { font-family: "Poppins", sans-serif; }
+    body { font-size: 16px; }
+    #content-area {
+      margin-left: 340px;
+      margin-right: 40px;
+      margin-top: 50px;
+      padding: 20px;
+    }
+    .login-form {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .login-form input[type="text"], .login-form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .login-form button {
+      background-color: #6a1b9a;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .login-form button:hover {
+      background-color: #9c27b0;
+    }
+    .register-link {
+      display: block;
+      margin-top: 15px;
+      text-align: center;
+      color: #6a1b9a;
+    }
+    .register-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- Content Area -->
+<div id="content-area" class="w3-main">
+  <h1 class="w3-xxxlarge w3-text-purple"><b>Iniciar Sesión</b></h1>
+  <hr style="width:50px;border:5px solid purple" class="w3-round">
+  
+  <div class="login-form">
+    <form>
+      <label for="email"><b>Correo Electrónico</b></label>
+      <input type="text" id="email" name="email" required>
+
+      <label for="password"><b>Contraseña</b></label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+    
+    <p class="register-link">¿No tienes una cuenta? <a href="#" onclick="loadContent('register.html')">Regístrate aquí</a></p>
+  </div>
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Script to load content without reloading the page
+function loadContent(page) {
+  if (page === 'home') {
+    document.getElementById("content-area").innerHTML = `
+      <h1 class="w3-jumbo"><b>Bienvenido a U-LIFE</b></h1>
+      <p>Seleccione una opción en el menú para comenzar.</p>
+    `;
+  } else {
+    fetch(page)
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("content-area").innerHTML = html;
+      });
+  }
+}
+</script>
+
+</body>
+</html>
