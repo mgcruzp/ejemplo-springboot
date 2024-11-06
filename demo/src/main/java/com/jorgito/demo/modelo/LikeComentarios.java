@@ -20,4 +20,31 @@ public class LikeComentarios {
 
     @ManyToOne
     Comentario comentario;
+
+    // Getter y Setter para 'id'
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    // Getter y Setter para 'usuario'
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    // Getter y Setter para 'comentario'
+    public Comentario getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(Comentario comentario) {
+        this.comentario = comentario;
+    }
 }

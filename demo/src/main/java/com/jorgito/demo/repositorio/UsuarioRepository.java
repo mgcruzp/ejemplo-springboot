@@ -8,13 +8,13 @@ import com.jorgito.demo.modelo.Usuario;
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
 
-    // Buscar por email, sin uso de Optional
+    // Buscar por email
     Usuario findByEmail(String email);
 
     // Verificar si existe un usuario por email
     boolean existsByEmail(String email);
 
     // Verificar si existe un usuario por teléfono
-    boolean existsByTeléfono(int teléfono);
+    boolean existsByTelefono(int teléfono);
 }
 

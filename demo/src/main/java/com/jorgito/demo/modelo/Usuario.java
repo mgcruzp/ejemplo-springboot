@@ -2,7 +2,6 @@ package com.jorgito.demo.modelo;
 
 import java.util.List;
 
-import com.google.common.base.Optional;
 import com.jorgito.demo.repositorio.UsuarioRepository;
 
 import jakarta.persistence.CascadeType;
@@ -40,7 +39,7 @@ public class Usuario {
     int edad;
 
     @Column(unique = true, nullable = false)
-    int teléfono;
+    int telefono;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     List<Inscripciones> inscripciones;
@@ -106,12 +105,12 @@ public class Usuario {
         this.edad = edad;
     }
 
-    public int getTeléfono() {
-        return teléfono;
+    public int getTelefono() {
+        return telefono;
     }
 
     public void setTeléfono(int teléfono) {
-        this.teléfono = teléfono;
+        this.telefono = teléfono;
     }
 
     public List<Inscripciones> getInscripciones() {
@@ -153,6 +152,7 @@ public class Usuario {
     public void setLikesComentarios(List<LikeComentarios> likesComentarios) {
         this.likesComentarios = likesComentarios;
     }
+
     public void setFromUsuario(Usuario usuario) {
         if (usuario != null) {
             this.email = usuario.getEmail();
@@ -160,7 +160,7 @@ public class Usuario {
             this.nombre = usuario.getNombre();
             this.apellido = usuario.getApellido();
             this.edad = usuario.getEdad();
-            this.teléfono = usuario.getTeléfono();
+            this.telefono = usuario.getTelefono();
             this.inscripciones = usuario.getInscripciones();
             this.publicaciones = usuario.getPublicaciones();
             this.likesDados = usuario.getLikesDados();
@@ -179,15 +179,33 @@ public class Usuario {
                 // Verifica si la contraseña es correcta
                 if (newUser.getContra().equals(contra)) {
                     setFromUsuario(newUser);
-
                     return true;
                 } else {
                     return false;
                 }
             }
         }
-    
-
+        return false;
     }
 
+    Boolean registrarse( String nombre, int edad, int telefono , String correoElectronico, String contra ){
+        Usuario user= new Usuario();
+        if(!(usuarioRepository.existsByEmail(email))){
+            if(!(usuarioRepository.existsByTelefono(telefono))){
+                 user.setContra(contra);
+                 user.setNombre(nombre);
+                 user.setEdad(edad);
+                 user.setEmail(correoElectronico);
+                 user.setTelefono(telefono);
+                 return true;
+            }
+            else{
+                return false;
+            }            
+        }else{
+            return false;
+        }
+
+
+    }
 }
