@@ -9,7 +9,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -169,43 +168,4 @@ public class Usuario {
         }
     }
 
-    boolean iniciarSesion(String email, String contra){
-        if(usuarioRepository.existsByEmail(email)){
-            Usuario newUser = usuarioRepository.findByEmail(email);
-            
-            // Si el usuario está presente
-            if (newUser != null) {
-                
-                // Verifica si la contraseña es correcta
-                if (newUser.getContra().equals(contra)) {
-                    setFromUsuario(newUser);
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-        return false;
-    }
-
-    Boolean registrarse( String nombre, int edad, int telefono , String correoElectronico, String contra ){
-        Usuario user= new Usuario();
-        if(!(usuarioRepository.existsByEmail(email))){
-            if(!(usuarioRepository.existsByTelefono(telefono))){
-                 user.setContra(contra);
-                 user.setNombre(nombre);
-                 user.setEdad(edad);
-                 user.setEmail(correoElectronico);
-                 user.setTelefono(telefono);
-                 return true;
-            }
-            else{
-                return false;
-            }            
-        }else{
-            return false;
-        }
-
-
-    }
 }
