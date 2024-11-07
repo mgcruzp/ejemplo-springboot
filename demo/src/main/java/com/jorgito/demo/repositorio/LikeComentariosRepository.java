@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.jorgito.demo.modelo.LikeComentarios;
 
 public interface LikeComentariosRepository extends CrudRepository<LikeComentarios, Long >{
-    
-    
+
+    LikeComentarios findByComentarioIdAndUsuarioId(Long comentarioId, Long usuarioId);
 
 }

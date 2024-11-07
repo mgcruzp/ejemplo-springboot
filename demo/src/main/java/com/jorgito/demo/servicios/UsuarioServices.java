@@ -31,19 +31,29 @@ public class UsuarioServices {
         return null;
     }
 
-    Usuario registrarse( String nombre, int edad, int telefono , String email, String contra ){
-        Usuario user= new Usuario();
-        if(!(usuarioRepository.existsByEmail(email))){
+    public Usuario guardarUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
 
-            user.setContra(contra);
-            user.setNombre(nombre);
-            user.setEdad(edad);
-            user.setEmail(email);
-            user.setTelefono(telefono);
-            return user;
+    Usuario registrarse( String nombre, int edad,  String email, String contra ){
+        try {
+            Usuario user= new Usuario();
+            if(!(usuarioRepository.existsByEmail(email))){
+
+                user.setContra(contra);
+                user.setNombre(nombre);
+                user.setEdad(edad);
+                user.setEmail(email);
+                return user;
                
-        }else{
+            }else{
+                throw new RuntimeException();
+            }
+        } catch (Exception e) {
+            System.err.println("no se puede ingresar un email ya existente ");
             return null;
         }
+        
     }
+    
 }
