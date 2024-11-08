@@ -2,14 +2,11 @@ package com.jorgito.demo.modelo;
 
 import java.util.List;
 
-import org.springframework.beans.factory.support.RegisteredBean.InstantiationDescriptor;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -27,7 +24,7 @@ public class Comunidad {
     @Column(unique = false, nullable = false)
     String fecha ;
 
-    @Column(unique = false, nullable = false)
+    @Column(unique = true, nullable = false)
     String nombre;
 
     @Column(unique = false, nullable = true)

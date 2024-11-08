@@ -2,8 +2,6 @@ package com.jorgito.demo.modelo;
 
 import java.util.List;
 
-import javax.swing.event.ListSelectionEvent;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

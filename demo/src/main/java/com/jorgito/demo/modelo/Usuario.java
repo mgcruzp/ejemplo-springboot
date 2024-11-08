@@ -2,7 +2,6 @@ package com.jorgito.demo.modelo;
 
 import java.util.List;
 
-import com.jorgito.demo.repositorio.UsuarioRepository;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -17,7 +16,7 @@ import lombok.Data;
 @Data
 @Table(name = "usuarios")
 public class Usuario {
-    UsuarioRepository usuarioRepository;
+
 
     @Id
     @GeneratedValue
