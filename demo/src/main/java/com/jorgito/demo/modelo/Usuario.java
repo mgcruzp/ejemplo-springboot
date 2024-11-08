@@ -107,7 +107,7 @@ public class Usuario {
         return telefono;
     }
 
-    public void setTeléfono(int teléfono) {
+    public void setTelefono(int teléfono) {
         this.telefono = teléfono;
     }
 

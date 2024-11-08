@@ -82,5 +82,64 @@ public class UsuarioServices {
         }
         
     }
+
+    Usuario cerrarSesion(){
+        Usuario user =new Usuario();
+            
+            user.setContra("1");
+            user.setNombre("1");
+            user.setEdad(1);
+            user.setEmail("1");               
+            
+            return user;
+        
+    }
+
+    Usuario editarNombre( Usuario usuario ,String nuevoNombre){
+
+        usuario.setNombre(nuevoNombre);
+        usuarioRepository.save(usuario);
+        return usuario;
+    }
     
+    Usuario editarApellido( Usuario usuario ,String apellido){
+
+        usuario.setApellido(apellido);
+        usuarioRepository.save(usuario);
+        return usuario;
+    }
+    Usuario editarTelefono( Usuario usuario ,int telefono){
+
+        usuario.setTelefono(telefono);
+        usuarioRepository.save(usuario);
+        return usuario;
+    }
+    Usuario editarContra( Usuario usuario ,String contra, String contraActual)
+        throws JorgitoException
+    {
+        try {
+            //1. Verificacion de contraseñas
+            if(!((usuario.getContra()).equals(contraActual))){
+                throw new JorgitoException("no se ingreso la contraseña actual de manera correcta");
+            }
+            usuario.setContra(contra);
+            usuarioRepository.save(usuario);
+            return usuario;
+        } catch (Exception e) {
+            throw new JorgitoException("hubo un error al cambiar contrasenia", e);
+        }
+        
+    }
+    Usuario editarEdad( Usuario usuario ,int edad){
+
+        usuario.setEdad(edad);
+        usuarioRepository.save(usuario);
+        return usuario;
+    }
+    Usuario editarEmail( Usuario usuario ,String email){
+
+        usuario.setEmail(email);
+        usuarioRepository.save(usuario);
+        return usuario;
+    }
 }
