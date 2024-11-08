@@ -19,7 +19,7 @@ public class PublicacionesService {
     // 3. ingresa la publicacion
     // 4. valida que el texto no este vacio
     // 5. guarda la nueva publicacion
-
+    /* 
     public Publicacion publicar(String email, String texto) 
         throws JorgitoException
     {
@@ -37,5 +37,5 @@ public class PublicacionesService {
 
     }
 
-
+*/
 }
