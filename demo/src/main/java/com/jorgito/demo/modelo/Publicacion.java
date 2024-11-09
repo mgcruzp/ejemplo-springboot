@@ -18,29 +18,31 @@ import lombok.Data;
 public class Publicacion {
     @Id  
     @GeneratedValue
-    long id; // id pa la normalizacion 
+    private long id; // id pa la normalizacion 
 
     
-    String informacion;
+    private String informacion;
 
     @Column(unique = false, nullable = false)
-    String fecha ;
+    private String fecha ;
     
     @ManyToOne
-    Usuario autor;
+    private Usuario autor;
 
     @ManyToOne
-    Comunidad comunidad;
+    private Comunidad comunidad;
 
     @OneToMany(mappedBy = "publicacion", cascade = CascadeType.REMOVE)
-    List<Comentario> comentarios;
+    private List<Comentario> comentarios;
 
     @OneToMany(mappedBy = "likeado", cascade = CascadeType.REMOVE)
-    List<LikePublicaciones> likesRecibidos;
+    private List<LikePublicaciones> likesRecibidos;
 
     @OneToMany(mappedBy = "publicacion", cascade = CascadeType.REMOVE)
-    List<Video> videos;
+    private List<Video> videos;
 
     @OneToMany(mappedBy = "publicacion", cascade = CascadeType.REMOVE)
-    List<Foto> fotos;
+    private List<Foto> fotos;
+
+    
 }

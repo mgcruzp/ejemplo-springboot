@@ -1,9 +1,14 @@
 package com.jorgito.demo.servicios;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jorgito.demo.modelo.Comunidad;
 import com.jorgito.demo.modelo.Publicacion;
+import com.jorgito.demo.modelo.Usuario;
 import com.jorgito.demo.repositorio.UsuarioRepository;
 
 // Casos de Uso de Publicaciones
@@ -13,29 +18,40 @@ public class PublicacionesService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    // publicar
-    // 1. ingresa el email
-    // 2. valida que el email existe
-    // 3. ingresa la publicacion
-    // 4. valida que el texto no este vacio
-    // 5. guarda la nueva publicacion
-    /* 
-    public Publicacion publicar(String email, String texto) 
+
+    
+     Publicacion publicar(Usuario autor, String informacion, Comunidad comunidad) 
         throws JorgitoException
     {
+        try {
+            // 1. valida que no el texto no este vacio
+            if (informacion == null || informacion.equals(""))
+            throw new Exception("la informacion de la publicacion está vacia");
 
-        // 2. valida que el email  exista
-        if (! usuarioRepository.existsByEmail(email))
-            throw new Exception("no existe un usuario con ese email");
-
-        // 4. valida que no el texto no este vacio
-        if (texto == null || texto.equals(""))
-            throw new Exception("El texto está vacio");
-
-        // 5. guarda
+            // 2. guarda
+            Publicacion publicacion = new Publicacion();
+            publicacion.setAutor(autor);
+            publicacion.setInformacion(informacion);
+            publicacion.setComunidad(comunidad);
+            
+            LocalDateTime fechaActual = LocalDateTime.now();
         
+            // Define el formato deseado
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        
+            // Convierte LocalDateTime a String
+             String fechaFormateada = fechaActual.format(formatter);
+        
+            publicacion.setFecha(fechaFormateada);
+            
 
+            return publicacion;
+
+        } catch (Exception e) {
+
+            throw new JorgitoException("Problema al publicar", e);
+        }
     }
-
-*/
+    
+    Publicacion agregarComentario()
 }

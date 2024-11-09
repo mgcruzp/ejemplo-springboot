@@ -1,8 +1,12 @@
 package com.jorgito.demo.servicios;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jorgito.demo.modelo.Comentario;
+import com.jorgito.demo.modelo.Publicacion;
 import com.jorgito.demo.modelo.Usuario;
 import com.jorgito.demo.repositorio.UsuarioRepository;
 
@@ -130,16 +134,92 @@ public class UsuarioServices {
         }
         
     }
+
+
     Usuario editarEdad( Usuario usuario ,int edad){
 
         usuario.setEdad(edad);
         usuarioRepository.save(usuario);
         return usuario;
     }
-    Usuario editarEmail( Usuario usuario ,String email){
+    
 
-        usuario.setEmail(email);
-        usuarioRepository.save(usuario);
+
+    Usuario editarEmail( Usuario usuario ,String email)
+        throws JorgitoException
+    {
+        try {
+            //1. Verificar si el email ya esta en uso
+            if(usuarioRepository.existsByEmail(email)){
+                throw new JorgitoException("el correo ya esta siendo utilizado");
+            }
+            usuario.setEmail(email);
+            usuarioRepository.save(usuario);
+            return usuario;
+        } catch (Exception e) {
+            throw new JorgitoException("hubo un error al cambiar correo", e);
+        }
+    }
+
+    Usuario QuitarPublicacion(long idPublicacion, Usuario usuario)
+        throws JorgitoException    
+    {
+        try {
+            boolean existe = false;
+            List<Publicacion> publis=  usuario.getPublicaciones();
+
+            //1. verificar que exista la publicacion en lista
+
+            for(Publicacion p : publis){
+
+                if((p.getId()) == idPublicacion ){
+                    publis.remove(p);
+                    existe= true;
+                    break;
+                }
+            }
+
+            if(existe == false)
+                throw new JorgitoException("En la lista del usuario no aparece esta publicacion");
+
+            usuario.setPublicaciones(publis);
+            
+            return usuario;
+
+        } catch (Exception e) {
+            throw new JorgitoException("hubo un  al quitar publicacion", e);
+        }
+
+    }
+
+Usuario agregarPublicacion(Usuario usuario, Publicacion publicacion)
+throws JorgitoException    
+{
+    try {
+        boolean existe = false;
+        List<Publicacion> publis=  usuario.getPublicaciones();
+
+        //1. verificar que exista la publicacion en lista
+
+        for(Publicacion p : publis){
+
+            if((p.getId()) == publicacion.getId() ){
+                existe= true;
+                break;
+            }
+        }
+
+        if(existe == true)
+            throw new JorgitoException("En la lista del usuario  aparece  publicacion cuando ya se agrego");
+
+        publis.add(publicacion);
+        usuario.setPublicaciones(publis);
+        
         return usuario;
+
+    } catch (Exception e) {
+        throw new JorgitoException("hubo un  al agregar publicacion", e);
+    }
+
     }
 }
