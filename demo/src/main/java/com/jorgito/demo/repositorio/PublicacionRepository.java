@@ -1,14 +1,15 @@
   package com.jorgito.demo.repositorio;
 
-import org.springframework.data.repository.kotlin.CoroutineCrudRepository;
-import org.springframework.stereotype.Repository;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import com.jorgito.demo.modelo.Publicacion;
 
 @Repository
-public interface PublicacionRepository extends CoroutineCrudRepository<Publicacion, Long> {
-    Publicacion findById(Long id);
+public interface PublicacionRepository extends CrudRepository<Publicacion, Long> {
+    Publicacion findById(long id);
 
     // Verificar si existe un usuario por email
-    boolean existsById(Long id);
+    boolean existsById(long id);
 }
+

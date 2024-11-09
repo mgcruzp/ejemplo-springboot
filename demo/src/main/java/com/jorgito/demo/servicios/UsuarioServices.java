@@ -199,7 +199,7 @@ throws JorgitoException
         boolean existe = false;
         List<Publicacion> publis=  usuario.getPublicaciones();
 
-        //1. verificar que exista la publicacion en lista
+        //1. verificar que no exista la publicacion en lista
 
         for(Publicacion p : publis){
 

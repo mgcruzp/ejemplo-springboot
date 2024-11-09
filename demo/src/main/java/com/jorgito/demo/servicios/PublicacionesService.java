@@ -9,15 +9,14 @@ import org.springframework.stereotype.Service;
 import com.jorgito.demo.modelo.Comunidad;
 import com.jorgito.demo.modelo.Publicacion;
 import com.jorgito.demo.modelo.Usuario;
-import com.jorgito.demo.repositorio.UsuarioRepository;
+import com.jorgito.demo.repositorio.PublicacionRepository;
 
 // Casos de Uso de Publicaciones
 @Service
 public class PublicacionesService {
 
     @Autowired
-    UsuarioRepository usuarioRepository;
-
+    PublicacionRepository publicacionRepository;
 
     
      Publicacion publicar(Usuario autor, String informacion, Comunidad comunidad) 
@@ -29,7 +28,7 @@ public class PublicacionesService {
             throw new Exception("la informacion de la publicacion está vacia");
 
             // 2. guarda
-            Publicacion publicacion = new Publicacion();
+            Publicacion publicacion = new Publicacion() ;
             publicacion.setAutor(autor);
             publicacion.setInformacion(informacion);
             publicacion.setComunidad(comunidad);
@@ -44,7 +43,7 @@ public class PublicacionesService {
         
             publicacion.setFecha(fechaFormateada);
             
-
+            publicacionRepository.save(publicacion);
             return publicacion;
 
         } catch (Exception e) {
@@ -53,5 +52,9 @@ public class PublicacionesService {
         }
     }
     
-    Publicacion agregarComentario()
+    //Publicacion agregarComentario(){
+            
+    
+
+    //}
 }
