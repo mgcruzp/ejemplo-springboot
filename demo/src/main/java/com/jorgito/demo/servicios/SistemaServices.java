@@ -17,16 +17,16 @@ public class SistemaServices {
     Usuario usuarioActivo;
     Comunidad comunidadActiva;
     
-    @Autowired
+    
     UsuarioServices usuarioServices;
-
-    @Autowired
+  
+    
     ComunidadServices comunidadServices;
 
     @Autowired
     UsuarioRepository usuarioRepository;
+     
     
-    @Autowired
     PublicacionService publicacionService;
 
 
@@ -73,7 +73,7 @@ public class SistemaServices {
     }
     
 
-
+ 
     void seleccionarComunidad(Comunidad c)
     throws JorgitoException
     {
@@ -128,4 +128,5 @@ public class SistemaServices {
         Publicacion p =publicacionService.publicar(usuarioActivo, informacion, comunidadActiva);
         usuarioActivo = usuarioServices.agregarPublicacion(usuarioActivo, p);
     }
+
 }

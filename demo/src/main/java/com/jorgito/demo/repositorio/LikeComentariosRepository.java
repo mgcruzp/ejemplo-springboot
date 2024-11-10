@@ -10,6 +10,6 @@ import com.jorgito.demo.modelo.Usuario;
 @Repository
 public interface LikeComentariosRepository extends CrudRepository<LikeComentarios, Long >{
 
-    LikeComentarios findByUsuarioAndComentario(Usuario usuario, Comentario comentario);
+    //LikeComentarios findByUsuarioAndComentario(Usuario usuario, Comentario comentario);
 
 }
