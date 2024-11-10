@@ -14,12 +14,12 @@ public class LikePublicaciones {
     
     @Id
     @GeneratedValue
-    long id;
+    private long id;
 
     @ManyToOne
-    Usuario dadorLike;
+    private Usuario dadorLike;
 
     @ManyToOne
-    Publicacion likeado;
+    private Publicacion likeado;
     
 }

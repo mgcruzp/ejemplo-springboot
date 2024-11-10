@@ -14,11 +14,11 @@ import lombok.Data;
 public class Video {
     @Id
     @GeneratedValue
-    long id;
+    private long id;
 
     @Column(nullable = false )
-    float duracion;
+    private float duracion;
 
     @ManyToOne
-    Publicacion publicacion;
+    private Publicacion publicacion;
 }

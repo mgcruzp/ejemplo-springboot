@@ -13,8 +13,8 @@ import lombok.Data;
 public class Foto {
     @Id
     @GeneratedValue
-    long id;
+    private long id;
 
     @ManyToOne
-    Publicacion publicacion;
+    private Publicacion publicacion;
 }

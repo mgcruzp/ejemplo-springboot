@@ -19,21 +19,21 @@ public class Comunidad {
 
     @Id
     @GeneratedValue
-    long id;
+    private long id;
 
     @Column(unique = false, nullable = false)
-    String fecha ;
+    private String fecha ;
 
     @Column(unique = true, nullable = false)
-    String nombre;
+    private String nombre;
 
     @Column(unique = false, nullable = true)
-    String descripcion;
+    private String descripcion;
 
     
     @OneToMany(mappedBy = "comunidad", cascade = CascadeType.REMOVE)
-    List<Inscripciones> inscritos;
+    private List<Inscripciones> inscritos;
 
     @OneToMany(mappedBy = "comunidad", cascade = CascadeType.REMOVE)
-    List<Publicacion> publicaciones;
+    private List<Publicacion> publicaciones;
 }

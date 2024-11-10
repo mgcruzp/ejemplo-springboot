@@ -14,12 +14,12 @@ public class Inscripciones {
         
     @Id
     @GeneratedValue
-    long id;
+    private long id;
 
     @ManyToOne
-    Usuario usuario;
+    private Usuario usuario;
 
     @ManyToOne
-    Comunidad comunidad;
+    private Comunidad comunidad;
     
 }

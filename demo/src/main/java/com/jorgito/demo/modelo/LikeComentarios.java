@@ -13,13 +13,13 @@ import lombok.Data;
 public class LikeComentarios {
     @Id
     @GeneratedValue
-    long id;
+    private long id;
 
     @ManyToOne
-    Usuario usuario;
+    private Usuario usuario;
 
     @ManyToOne
-    Comentario comentario;
+    private Comentario comentario;
 
     // Getter y Setter para 'id'
     public long getId() {

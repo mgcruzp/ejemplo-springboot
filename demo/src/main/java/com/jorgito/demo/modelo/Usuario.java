@@ -20,39 +20,39 @@ public class Usuario {
 
     @Id
     @GeneratedValue
-    Long id; // se usa un id para la normalizacion ya que las tablas se basan segun las clases
+    private Long id; // se usa un id para la normalizacion ya que las tablas se basan segun las clases
 
     @Column(unique = true, nullable = false)
-    String email;
+    private String email;
 
     @Column(unique = false, nullable = false)
-    String contra;
+    private String contra;
     
-    String nombre;
+    private String nombre;
 
     @Column(unique = false, nullable = true)
-    String apellido;
+    private String apellido;
 
     
-    int edad;
+    private int edad;
 
     @Column(unique = true, nullable = false)
-    int telefono;
+    private int telefono;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-    List<Inscripciones> inscripciones;
+    private List<Inscripciones> inscripciones;
 
     @OneToMany(mappedBy = "autor", cascade = CascadeType.REMOVE)
-    List<Publicacion> publicaciones;
+    private List<Publicacion> publicaciones;
 
     @OneToMany(mappedBy = "dadorLike", cascade = CascadeType.REMOVE)
-    List<LikePublicaciones> likesDados;
+    private List<LikePublicaciones> likesDados;
     
     @OneToMany(mappedBy = "autor", cascade = CascadeType.REMOVE)
-    List<Comentario> comentarios;
+    private List<Comentario> comentarios;
 
     @OneToMany(mappedBy = "usuario")
-    List<LikeComentarios> likesComentarios;
+    private List<LikeComentarios> likesComentarios;
 
     
     public Long getId() {

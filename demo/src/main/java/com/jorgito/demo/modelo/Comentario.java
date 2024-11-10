@@ -19,29 +19,29 @@ public class Comentario {
 
     @Id
     @GeneratedValue
-    long id;
+    private long id;
 
     @Column(unique = false, nullable = false)
-    String fecha ;
+    private String fecha ;
 
 
     @Column(unique = false, nullable = true)
-    String descripcion;
+    private String descripcion;
 
     @ManyToOne
     Publicacion publicacion;
 
     @ManyToOne
-    Usuario autor;
+    private Usuario autor;
 
     @ManyToOne
-    Comentario comentarioPadre;
+    private Comentario comentarioPadre;
 
     @OneToMany(mappedBy = "comentarioPadre", cascade = CascadeType.REMOVE)
-    List<Comentario> comentarios;
+    private List<Comentario> comentarios;
 
     @OneToMany(mappedBy = "comentario", cascade = CascadeType.REMOVE)
-    List<LikeComentarios> likes;
+    private List<LikeComentarios> likes;
 
 
 
