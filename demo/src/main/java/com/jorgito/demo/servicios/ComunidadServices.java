@@ -2,6 +2,8 @@ package com.jorgito.demo.servicios;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.jorgito.demo.modelo.Comunidad;
 import com.jorgito.demo.modelo.Inscripciones;
 import com.jorgito.demo.modelo.Publicacion;
@@ -11,7 +13,10 @@ import com.jorgito.demo.repositorio.InscripcionesRepository;
 
 public class ComunidadServices {
 
+    @Autowired
     ComunidadRepository comunidadRepository;
+
+    @Autowired
     InscripcionesRepository inscripcionesRepository;
 
     //0. crear comunidad

@@ -156,7 +156,7 @@ public class UsuarioServices {
                 throw new JorgitoException("el correo ya esta siendo utilizado");
             }
             usuario.setEmail(email);
-            usuarioRepository.save(usuario);
+                
             return usuario;
         } catch (Exception e) {
             throw new JorgitoException("hubo un error al cambiar correo", e);
@@ -216,7 +216,8 @@ public class UsuarioServices {
 
             publis.add(publicacion);
             usuario.setPublicaciones(publis);
-            
+
+            usuarioRepository.save(usuario);
             return usuario;
 
         } catch (Exception e) {

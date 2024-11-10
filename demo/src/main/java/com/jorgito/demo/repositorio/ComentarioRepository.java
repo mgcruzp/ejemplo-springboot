@@ -10,5 +10,5 @@ public interface ComentarioRepository extends CrudRepository<Comentario, Long>{
     Comentario findById(long id);
 
     // Verificar si existe un usuario por email
-    boolean existsById(Long id);
+    boolean existsById(long id);
 }

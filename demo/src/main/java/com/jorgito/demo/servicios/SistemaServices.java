@@ -2,10 +2,12 @@ package com.jorgito.demo.servicios;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jorgito.demo.modelo.Comunidad;
 import com.jorgito.demo.modelo.Inscripciones;
+import com.jorgito.demo.modelo.Publicacion;
 import com.jorgito.demo.modelo.Usuario;
 import com.jorgito.demo.repositorio.UsuarioRepository;
 
@@ -14,9 +16,20 @@ public class SistemaServices {
 
     Usuario usuarioActivo;
     Comunidad comunidadActiva;
+    
+    @Autowired
     UsuarioServices usuarioServices;
+
+    @Autowired
     ComunidadServices comunidadServices;
+
+    @Autowired
     UsuarioRepository usuarioRepository;
+    
+    @Autowired
+    PublicacionService publicacionService;
+
+
     void inicioSesion(String email, String contra) 
         throws JorgitoException
     {
@@ -40,7 +53,11 @@ public class SistemaServices {
 
     }
     
-    
+    void cerrarSesion(){
+        usuarioActivo=usuarioServices.cerrarSesion();
+    }
+
+
     void entrarAComunidad(String nombreC)
     throws JorgitoException
     {
@@ -105,4 +122,10 @@ public class SistemaServices {
         usuarioActivo =usuarioServices.editarEmail( usuario , email);
     }
 
+    void agregarPublicacion(String informacion)    
+    throws JorgitoException
+    {
+        Publicacion p =publicacionService.publicar(usuarioActivo, informacion, comunidadActiva);
+        usuarioActivo = usuarioServices.agregarPublicacion(usuarioActivo, p);
+    }
 }

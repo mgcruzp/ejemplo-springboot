@@ -13,7 +13,7 @@ import com.jorgito.demo.repositorio.PublicacionRepository;
 
 // Casos de Uso de Publicaciones
 @Service
-public class PublicacionesService {
+public class PublicacionService {
 
     @Autowired
     PublicacionRepository publicacionRepository;
