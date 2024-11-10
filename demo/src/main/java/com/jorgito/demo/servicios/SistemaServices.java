@@ -88,38 +88,38 @@ public class SistemaServices {
         
     }
 
-    void editarNombre( Usuario usuario ,String nuevoNombre){
+    void editarNombre(String nuevoNombre){
 
-        usuarioActivo =usuarioServices.editarNombre( usuario , nuevoNombre);
+        usuarioActivo =usuarioServices.editarNombre( usuarioActivo , nuevoNombre);
     }
 
-    void editarApellido( Usuario usuario ,String apellido){
+    void editarApellido( String apellido){
 
-        usuarioActivo =usuarioServices.editarApellido( usuario , apellido);
+        usuarioActivo =usuarioServices.editarApellido( usuarioActivo , apellido);
     }
-    void editarTelefono( Usuario usuario ,int telefono){
+    void editarTelefono( int telefono){
 
-        usuarioActivo =usuarioServices.editarTelefono( usuario , telefono);
+        usuarioActivo =usuarioServices.editarTelefono( usuarioActivo , telefono);
     }
-    void editarContra( Usuario usuario ,String contra, String contraActual)
+    void editarContra(String contra, String contraActual)
         throws JorgitoException
     {
-        usuarioActivo =usuarioServices.editarContra( usuario , contra, contraActual);
+        usuarioActivo =usuarioServices.editarContra( usuarioActivo , contra, contraActual);
         
     }
 
 
-    void editarEdad( Usuario usuario ,int edad){
+    void editarEdad( int edad){
 
-        usuarioActivo=usuarioServices.editarEdad( usuario , edad);
+        usuarioActivo=usuarioServices.editarEdad( usuarioActivo , edad);
     }
     
 
 
-    void editarEmail( Usuario usuario ,String email)
+    void editarEmail( String email)
         throws JorgitoException
     {
-        usuarioActivo =usuarioServices.editarEmail( usuario , email);
+        usuarioActivo =usuarioServices.editarEmail( usuarioActivo , email);
     }
 
     void agregarPublicacion(String informacion)    
