@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jorgito.demo.modelo.Comentario;
+import com.jorgito.demo.modelo.Comunidad;
+import com.jorgito.demo.modelo.Inscripciones;
 import com.jorgito.demo.modelo.Publicacion;
 import com.jorgito.demo.modelo.Usuario;
 import com.jorgito.demo.repositorio.UsuarioRepository;
@@ -192,34 +194,55 @@ public class UsuarioServices {
 
     }
 
-Usuario agregarPublicacion(Usuario usuario, Publicacion publicacion)
-throws JorgitoException    
-{
-    try {
-        boolean existe = false;
-        List<Publicacion> publis=  usuario.getPublicaciones();
+    Usuario agregarPublicacion(Usuario usuario, Publicacion publicacion)
+    throws JorgitoException    
+    {
+        try {
+            boolean existe = false;
+            List<Publicacion> publis=  usuario.getPublicaciones();
 
-        //1. verificar que no exista la publicacion en lista
+            //1. verificar que no exista la publicacion en lista
 
-        for(Publicacion p : publis){
+            for(Publicacion p : publis){
 
-            if((p.getId()) == publicacion.getId() ){
-                existe= true;
-                break;
+                if((p.getId()) == publicacion.getId() ){
+                    existe= true;
+                    break;
+                }
             }
+
+            if(existe == true)
+                throw new JorgitoException("En la lista del usuario  aparece  publicacion cuando ya se agrego");
+
+            publis.add(publicacion);
+            usuario.setPublicaciones(publis);
+            
+            return usuario;
+
+        } catch (Exception e) {
+            throw new JorgitoException("hubo un  al agregar publicacion", e);
         }
 
-        if(existe == true)
-            throw new JorgitoException("En la lista del usuario  aparece  publicacion cuando ya se agrego");
-
-        publis.add(publicacion);
-        usuario.setPublicaciones(publis);
-        
-        return usuario;
-
-    } catch (Exception e) {
-        throw new JorgitoException("hubo un  al agregar publicacion", e);
     }
 
+    Comunidad seleccionarComunidad(Comunidad c, Usuario usuario)
+    throws JorgitoException
+    {
+        try {
+            boolean flag = true;
+            for(Inscripciones i : usuario.getInscripciones() ){
+
+                if(i.getComunidad().equals(c));
+                    flag= false;
+                    return i.getComunidad();
+            }
+            if(flag)
+                throw new JorgitoException("no existe la comunidad dentro de tus comunidades");
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return c;
     }
+
 }
