@@ -12,21 +12,42 @@ import com.jorgito.demo.modelo.Usuario;
 import com.jorgito.demo.repositorio.ComunidadRepository;
 import com.jorgito.demo.repositorio.InscripcionesRepository;
 
-public class ComunidadServices {
+    public class ComunidadServices {
 
-    @Autowired
-    ComunidadRepository comunidadRepository;
+        @Autowired
+        ComunidadRepository comunidadRepository;
 
-    @Autowired
-    InscripcionesRepository inscripcionesRepository;
+        @Autowired
+        InscripcionesRepository inscripcionesRepository;
 
-    //0. crear comunidad
+        Comunidad crearComunidad(String nombre, String descripcion, Usuario creador) 
+        throws JorgitoException 
+    {
+        try {
+            //1. verificar que el nombre no este en uso
+            if(comunidadRepository.existsByNombre(nombre))
+                throw new JorgitoException("Ya existe una comunidad con ese nombre");
+
+            //2. verificar que el nombre no este vacío
+            if (nombre == null || nombre.equals(""))
+                throw new JorgitoException("El nombre de la comunidad está vacío");
+
+            //3. verificar que la descripcion no este vacia
+            if (descripcion == null || descripcion.equals(""))
+                throw new JorgitoException("La descripción de la comunidad está vacía");
+
+            Comunidad comunidad = new Comunidad();
+            comunidad.setNombre(nombre);
+            comunidad.setDescripcion(descripcion);
     
-    //1. verificar que el nombre no este en uso
-    //2. verificar que la descripcion no este vacia
-   
-    
 
+            comunidadRepository.save(comunidad);
+            return comunidad;
+
+        } catch (Exception e) {
+            throw new JorgitoException("Error al crear la comunidad", e);
+        }
+    }
 
     Comunidad agregarPublicacion(Publicacion publicacion, Comunidad comunidad)
     throws JorgitoException
