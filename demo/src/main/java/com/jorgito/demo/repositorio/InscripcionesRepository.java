@@ -1,4 +1,4 @@
-package com.jorgito.demo.repositorio;
+ package com.jorgito.demo.repositorio;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

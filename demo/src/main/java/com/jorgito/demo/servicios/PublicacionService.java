@@ -51,7 +51,7 @@ public class PublicacionService {
             throw new JorgitoException("Problema al publicar", e);
         }
     }
-    
+    p
     //Publicacion agregarComentario(){
             
     
