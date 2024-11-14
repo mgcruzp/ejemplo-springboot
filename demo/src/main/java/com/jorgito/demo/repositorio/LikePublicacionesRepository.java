@@ -10,6 +10,6 @@ import com.jorgito.demo.modelo.Usuario;
 
 @Repository
 public interface LikePublicacionesRepository extends CrudRepository<LikePublicaciones, Long> {
-    LikePublicaciones findByUsuarioAndPublicacion(Usuario usuario, Publicacion publicacion);
-    boolean existsByUsuarioAndPublicacion(Usuario usuario, Publicacion publicacion);
+    //LikePublicaciones findByUsuarioAndPublicacion(Usuario usuario, Publicacion publicacion);
+    //boolean existsByUsuarioAndPublicacion(Usuario usuario, Publicacion publicacion);
 }
