@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+Hola 
+<span th:text="${nombre}" /> 
+<span th:text="${apellido}" />
+!!
+
+<br/>
+<hr/>
+
+<ul>
+    <li th:each="item: ${numeros}">
+        <span th:text="${item}" />
+    </li>
+</ul>
+
+<hr />
+
+<form action="#" th:action="@{/app/login}" 
+        method="post"
+        th:object="${loginForm}">  <!-- Model Attribute -->
+
+    login: 
+    <input type="text" name="login" 
+            th:field="*{login}" /> <!-- atributo -->
+    <br/>
+
+    password
+    <input type="password" name="password" 
+            th:field="*{password}"/>
+    <br/>
+
+    <input type="reset" value="borrar" />
+    <input type="submit" value="login" />
+</form>
+
+<hr/>
+
+
+</html>
