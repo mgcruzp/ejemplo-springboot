@@ -37,7 +37,7 @@ public class Usuario {
     private int edad;
 
     @Column(unique = true, nullable = false)
-    private int telefono;
+    private String telefono;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     private List<Inscripciones> inscripciones;
@@ -103,12 +103,12 @@ public class Usuario {
         this.edad = edad;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int teléfono) {
-        this.telefono = teléfono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public List<Inscripciones> getInscripciones() {

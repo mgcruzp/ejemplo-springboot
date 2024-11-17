@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.jorgito.demo.servicios.JorgitoException;
 import com.jorgito.demo.servicios.SistemaServices;
 
 @Controller
@@ -37,9 +38,9 @@ public class LoginPageController {
 
     // POST para procesar el formulario
     @PostMapping("/app/login")
-    public String procesarFormulario(
+    public String procesarFormulario (
         @ModelAttribute(name = "loginForm") LoginFormDTO loginForm,
-        Model model) {
+        Model model) throws JorgitoException{
 
         // saca los datos del formulario
         System.out.println(loginForm.getLogin());
@@ -47,10 +48,9 @@ public class LoginPageController {
 
         // llama a la logica de negocio
         boolean resultado = false;
-        
-        //sistema.iniciarSesion(
-        //    loginForm.getLogin(), 
-        //    loginForm.getPassword());
+        String email = loginForm.getLogin();
+        String passwd = loginForm.getPassword();
+        sistema.inicioSesion(email, passwd);
 
         model.addAttribute("loginForm", loginForm);
 

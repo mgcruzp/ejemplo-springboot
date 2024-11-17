@@ -114,7 +114,7 @@ public class UsuarioServices {
         usuarioRepository.save(usuario);
         return usuario;
     }
-    Usuario editarTelefono( Usuario usuario ,int telefono){
+    Usuario editarTelefono( Usuario usuario ,String telefono){
 
         usuario.setTelefono(telefono);
         usuarioRepository.save(usuario);

@@ -30,7 +30,7 @@ public class SistemaServices {
     PublicacionService publicacionService;
 
 
-    void inicioSesion(String email, String contra) 
+   public void inicioSesion(String email, String contra) 
         throws JorgitoException
     {
         try {
@@ -41,7 +41,7 @@ public class SistemaServices {
 
     }
 
-    void registrarse( String nombre, int edad,  String email, String contra )
+    public void registrarse( String nombre, int edad,  String email, String contra )
      throws JorgitoException
      {
         try {
@@ -88,20 +88,20 @@ public class SistemaServices {
         
     }
 
-    void editarNombre(String nuevoNombre){
+    public void editarNombre(String nuevoNombre){
 
         usuarioActivo =usuarioServices.editarNombre( usuarioActivo , nuevoNombre);
     }
 
-    void editarApellido( String apellido){
+    public void editarApellido( String apellido){
 
         usuarioActivo =usuarioServices.editarApellido( usuarioActivo , apellido);
     }
-    void editarTelefono( int telefono){
+    public void editarTelefono( String telefono){
 
         usuarioActivo =usuarioServices.editarTelefono( usuarioActivo , telefono);
     }
-    void editarContra(String contra, String contraActual)
+    public void editarContra(String contra, String contraActual)
         throws JorgitoException
     {
         usuarioActivo =usuarioServices.editarContra( usuarioActivo , contra, contraActual);
@@ -109,14 +109,14 @@ public class SistemaServices {
     }
 
 
-    void editarEdad( int edad){
+    public void editarEdad( int edad){
 
         usuarioActivo=usuarioServices.editarEdad( usuarioActivo , edad);
     }
     
 
 
-    void editarEmail( String email)
+    public void editarEmail( String email)
         throws JorgitoException
     {
         usuarioActivo =usuarioServices.editarEmail( usuarioActivo , email);

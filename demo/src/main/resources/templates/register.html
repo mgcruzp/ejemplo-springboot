@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+    <form action="#" th:action="@{/app/register}" 
+        method="post"
+        th:object="${registerForm}">  <!-- Model Attribute -->
+    nombre:
+    <input type="text" name="nombre"
+            th:field="*{nombre}" /> <!-- atributo -->
+    <br/>
+    edad:
+    <input type="text" edad="edad"
+            th:field="*{edad}" /> <!-- atributo -->
+    login: 
+    <input type="text" name="registro" 
+            th:field="*{registro}" /> <!-- atributo -->
+    <br/>
+
+    password
+    <input type="password" name="password" 
+            th:field="*{password}"/> <!-- atributo -->
+    <br/>
+
+    <input type="reset" value="borrar" />
+    <input type="submit" value="registro" />
+</form>
+
+<hr/>
+
+
+</html>
