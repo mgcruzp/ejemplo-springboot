@@ -50,12 +50,12 @@ public class LoginPageController {
         boolean resultado = false;
         String email = loginForm.getLogin();
         String passwd = loginForm.getPassword();
-        sistema.inicioSesion(email, passwd);
+        resultado = sistema.inicioSesion(email, passwd);
 
         model.addAttribute("loginForm", loginForm);
 
         if (resultado == true)
-            return "menu.html";
+            return "home.html";
         else 
             return "login.html";
     }

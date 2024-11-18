@@ -43,29 +43,29 @@ public String procesarFormulario (
    
     
     if(nombre!=""){
-        sistema.editarNombre(nombre);
+        resultado=sistema.editarNombre(nombre);
     }
     if(apellido!=""){
-        sistema.editarApellido(apellido);
+        resultado=sistema.editarApellido(apellido);
     }
     if(telefono!=""){
-        sistema.editarTelefono(telefono);
+        resultado=sistema.editarTelefono(telefono);
     }
     if(edad!=0){
-        sistema.editarEdad(edad);
+       resultado=sistema.editarEdad(edad);
     }
     if(email!=""){
-        sistema.editarEmail(email);
+        resultado=sistema.editarEmail(email);
     }
     if(passwd!=""){
-        sistema.editarContra(email, passwd);
+        resultado=sistema.editarContra(email, passwd);
     }
 
 
     model.addAttribute("registerForm", ModUserForm);
 
     if (resultado == true)
-        return "menu.html";
+        return "home.html";
     else 
         return "settings.html";
 }

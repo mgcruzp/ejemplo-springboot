@@ -37,12 +37,12 @@ public String procesarFormulario (
     String passwd = registerForm.getPassword();
     int edad = registerForm.getEdad();
     String nombre = registerForm.getNombre();
-    sistema.registrarse(nombre, edad, email, passwd);
+    resultado = sistema.registrarse(nombre, edad, email, passwd);
 
     model.addAttribute("registerForm", registerForm);
 
     if (resultado == true)
-        return "menu.html";
+        return "home.html";
     else 
         return "register.html";
 }
