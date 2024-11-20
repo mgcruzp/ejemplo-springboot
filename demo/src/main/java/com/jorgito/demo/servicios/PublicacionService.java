@@ -114,7 +114,7 @@ public class PublicacionService {
             return comentario;
             
 
-        } catch (Exception comentarioDelComentario) {
+        } catch (Exception  e) {
 
             throw new JorgitoException("Problema al publicar", e);
         }
