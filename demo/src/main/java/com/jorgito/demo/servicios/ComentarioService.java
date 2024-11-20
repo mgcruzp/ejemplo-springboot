@@ -18,6 +18,11 @@ public class ComentarioService {
     throws JorgitoException
     {
             try {
+
+                if (descripcion == null || descripcion.equals("")) 
+                    throw new JorgitoException("descripcion del comentario esta vacia");
+
+
                 Comentario comentario = new Comentario();
                 comentario.setAutor(autor);
                 comentario.setPublicacion(publicacion);
@@ -40,6 +45,11 @@ public class ComentarioService {
     throws JorgitoException
     {
         try {
+
+                if (descripcion == null || descripcion.equals("")) 
+                    throw new JorgitoException("descripcion del comentario esta vacia");
+
+                    
                 Comentario comentarioo= crearComentario(autor, publicacion, descripcion);  
                 comentarioo.setComentarioPadre(comentario);
                 List<Comentario> c = comentario.getComentarios();

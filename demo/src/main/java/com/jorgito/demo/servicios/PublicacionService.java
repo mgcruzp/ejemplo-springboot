@@ -18,6 +18,7 @@ public class PublicacionService {
     @Autowired
     PublicacionRepository publicacionRepository;
 
+    ComentarioService comentarioService;
     
      Publicacion publicar(Usuario autor, String informacion, Comunidad comunidad) 
         throws JorgitoException
@@ -52,9 +53,14 @@ public class PublicacionService {
         }
     }
 
-    //Publicacion agregarComentario(){
+    Publicacion agregarComentario()
+    throws JorgitoException
+    {
+        try {
             
-    
 
-    //}
-}
+        } catch (Exception e) {
+
+            throw new JorgitoException("Problema al publicar", e);
+        }
+    }
