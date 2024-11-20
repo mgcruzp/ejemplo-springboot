@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jorgito.demo.modelo.Comentario;
 import com.jorgito.demo.modelo.Comunidad;
 import com.jorgito.demo.modelo.Inscripciones;
 import com.jorgito.demo.modelo.Publicacion;
@@ -129,4 +130,43 @@ public class SistemaServices {
         usuarioActivo = usuarioServices.agregarPublicacion(usuarioActivo, p);
     }
 
+    void agregarComentario (Publicacion publicacion,  String descripcion)
+    throws JorgitoException
+    {
+        try {
+
+            
+            Comentario comentario = publicacionService.agregarComentario(publicacion, usuarioActivo, descripcion);
+
+            List<Comentario> comentariosUser = usuarioActivo.getComentarios();
+            comentariosUser.add(comentario);
+            usuarioActivo.setComentarios(comentariosUser);
+            usuarioRepository.save(usuarioActivo);
+
+            
+        } catch (Exception e) {
+            throw new JorgitoException( "Error al agregar comentario", e);
+        }
+        
+    }
+
+    void agregarComentarioAComentario (Publicacion publicacion,  String descripcion)
+    throws JorgitoException
+    {
+        try {
+
+            
+            Comentario comentario = publicacionService.agregarComentario(publicacion, usuarioActivo, descripcion);
+
+            List<Comentario> comentariosUser = usuarioActivo.getComentarios();
+            comentariosUser.add(comentario);
+            usuarioActivo.setComentarios(comentariosUser);
+            usuarioRepository.save(usuarioActivo);
+
+            
+        } catch (Exception e) {
+            throw new JorgitoException( "Error al comentar un comentario", e);
+        }
+        
+    }
 }

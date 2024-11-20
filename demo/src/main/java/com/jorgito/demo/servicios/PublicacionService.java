@@ -2,14 +2,17 @@ package com.jorgito.demo.servicios;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jorgito.demo.modelo.Comentario;
 import com.jorgito.demo.modelo.Comunidad;
 import com.jorgito.demo.modelo.Publicacion;
 import com.jorgito.demo.modelo.Usuario;
 import com.jorgito.demo.repositorio.PublicacionRepository;
+import com.jorgito.demo.repositorio.UsuarioRepository;
 
 // Casos de Uso de Publicaciones
 @Service
@@ -17,6 +20,9 @@ public class PublicacionService {
 
     @Autowired
     PublicacionRepository publicacionRepository;
+
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
     ComentarioService comentarioService;
     
@@ -53,10 +59,27 @@ public class PublicacionService {
         }
     }
 
-    Publicacion agregarComentario()
+    Comentario agregarComentario(Publicacion publicacion, Usuario autor, String descripcion)
     throws JorgitoException
     {
         try {
+            
+            if (!publicacionRepository.existsById(publicacion.getId()))
+                throw new JorgitoException("No existe la publicacion a la que se quiere agregar el comentario");
+
+            Comentario comentario = comentarioService.crearComentario(autor, publicacion, descripcion);
+
+            
+            List<Comentario> comentariosPubli = publicacion.getComentarios();
+            
+            comentariosPubli.add(comentario);
+            
+            publicacion.setComentarios(comentariosPubli);
+
+            publicacionRepository.save(publicacion);
+
+            
+            return comentario;
             
 
         } catch (Exception e) {
@@ -64,3 +87,36 @@ public class PublicacionService {
             throw new JorgitoException("Problema al publicar", e);
         }
     }
+
+    Comentario agregarComentarioAComentario(Publicacion publicacion, Usuario autor, String descripcion, Comentario comentario)
+    throws JorgitoException
+    {
+        try {
+
+            if(!publicacion.getComentarios().contains(comentario)) 
+                throw new JorgitoException("No existe la publicacion donde se quiere comentar");
+            if (!publicacionRepository.existsById(publicacion.getId()))
+                throw new JorgitoException("No existe la publicacion donde se quiere comentar");
+
+            Comentario comentarioDelComentario = comentarioService.comentarComentario( comentario, autor,  publicacion, descripcion);
+
+            
+            List<Comentario> comentariosPubli = publicacion.getComentarios();
+
+            int idPadre =comentariosPubli.indexOf(comentario);
+            comentariosPubli.remove(idPadre);
+            comentariosPubli.add(comentarioDelComentario.getComentarioPadre());
+            comentariosPubli.add(comentarioDelComentario);
+            publicacion.setComentarios(comentariosPubli);
+            publicacionRepository.save(publicacion);
+
+            
+            return comentario;
+            
+
+        } catch (Exception comentarioDelComentario) {
+
+            throw new JorgitoException("Problema al publicar", e);
+        }
+    }
+}

@@ -46,10 +46,12 @@ public class ComentarioService {
     {
         try {
 
+                if (!comentarioRepository.existsById(comentario.getId())) 
+                    throw new JorgitoException("No existe comentario al que se quiere comentar");
                 if (descripcion == null || descripcion.equals("")) 
                     throw new JorgitoException("descripcion del comentario esta vacia");
 
-                    
+
                 Comentario comentarioo= crearComentario(autor, publicacion, descripcion);  
                 comentarioo.setComentarioPadre(comentario);
                 List<Comentario> c = comentario.getComentarios();
@@ -57,7 +59,7 @@ public class ComentarioService {
                 comentario.setComentarios(c);
                 comentarioRepository.save(comentarioo);
                 comentarioRepository.save(comentario);
-                return comentario;
+                return comentarioo;
         } catch (Exception e) {
             throw new JorgitoException("error al crear comentario que comenta comentario en Comentario", e);
         }
