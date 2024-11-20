@@ -36,6 +36,27 @@
 <p>Únete a nuestras comunidades para aprender, colaborar y crecer juntos. Contamos con espacios para el estudio, actividades sociales, y muchos más.</p>
 <hr style="width:50px;border:5px solid purple" class="w3-round">
 
+
+
+<p>Hola 
+  <span th:text="${usuarioActual.nombre}"></span>
+  !!
+</p>
+
+<hr/>
+
+<ul th:each="comunidad : ${comunidades}">
+  <li> 
+    <span th:text="${comunidad.nombre}"></span>
+    El enlace tendría 
+    <span th:text="${comunidad.id}"></span>
+    - 
+    <span th:text="${usuarioActual.id}"></span>
+  </li>
+</ul>
+
+<hr/>
+
 <!-- Comunidad JAVEX -->
 <h2 class="w3-text-purple"><b>JAVEX - Semillero de Robótica</b></h2>
 <p>

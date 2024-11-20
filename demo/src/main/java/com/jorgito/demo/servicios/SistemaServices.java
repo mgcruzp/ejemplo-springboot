@@ -17,25 +17,25 @@ public class SistemaServices {
     Usuario usuarioActivo;
     Comunidad comunidadActiva;
     
-    
+    @Autowired
     UsuarioServices usuarioServices;
   
-    
+    @Autowired
     ComunidadServices comunidadServices;
 
     @Autowired
     UsuarioRepository usuarioRepository;
      
-    
+    @Autowired
     PublicacionService publicacionService;
 
 
-   public Boolean inicioSesion(String email, String contra) 
+    public Usuario inicioSesion(String email, String contra) 
         throws JorgitoException
     {
         try {
             usuarioActivo = usuarioServices.iniciarSesion(email, contra);
-            return true;
+            return usuarioActivo;
         } catch (Exception e) {
             throw new JorgitoException( "Error al iniciar sesion", e);
         }

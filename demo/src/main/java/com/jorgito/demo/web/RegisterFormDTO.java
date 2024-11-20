@@ -5,8 +5,13 @@ import lombok.Data;
 @Data
 public class RegisterFormDTO {
 
-    String register = "";
-    String password = "";
-    int edad = 0;
     String nombre = "";
+
+    int edad = 0;
+
+    String email = "";
+    
+    String password = "";
+
+
 }

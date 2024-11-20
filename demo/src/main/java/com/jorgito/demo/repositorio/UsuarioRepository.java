@@ -15,6 +15,6 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
     boolean existsByEmail(String email);
 
     // Verificar si existe un usuario por teléfono
-    boolean existsByTelefono(int teléfono);
+    boolean existsByTelefono(String teléfono);
 }
 

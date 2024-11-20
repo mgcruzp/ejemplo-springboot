@@ -3,11 +3,8 @@ package com.jorgito.demo.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import com.jorgito.demo.servicios.SistemaServices;
 import org.springframework.ui.Model;
-import com.jorgito.demo.servicios.JorgitoException;
 
 @Controller
 public class ComentarioPageController {

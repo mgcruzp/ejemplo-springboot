@@ -1,5 +1,6 @@
 package com.jorgito.demo.modelo;
 
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -22,7 +23,7 @@ public class Comunidad {
     private long id;
 
     @Column(unique = false, nullable = false)
-    private String fecha ;
+    private String fecha = "20/11/2024";
 
     @Column(unique = true, nullable = false)
     private String nombre;

@@ -4,6 +4,7 @@ package com.jorgito.demo.servicios;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jorgito.demo.modelo.Comunidad;
 import com.jorgito.demo.modelo.Inscripciones;
@@ -12,15 +13,16 @@ import com.jorgito.demo.modelo.Usuario;
 import com.jorgito.demo.repositorio.ComunidadRepository;
 import com.jorgito.demo.repositorio.InscripcionesRepository;
 
-    public class ComunidadServices {
+@Service
+public class ComunidadServices {
 
-        @Autowired
-        ComunidadRepository comunidadRepository;
+    @Autowired
+    ComunidadRepository comunidadRepository;
 
-        @Autowired
-        InscripcionesRepository inscripcionesRepository;
+    @Autowired
+    InscripcionesRepository inscripcionesRepository;
 
-        Comunidad crearComunidad(String nombre, String descripcion, Usuario creador) 
+    Comunidad crearComunidad(String nombre, String descripcion, Usuario creador) 
         throws JorgitoException 
     {
         try {

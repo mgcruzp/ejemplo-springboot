@@ -33,10 +33,10 @@ public class Usuario {
     @Column(unique = false, nullable = true)
     private String apellido;
 
-    
+   
     private int edad;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = true) // NOT NULL
     private String telefono;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
