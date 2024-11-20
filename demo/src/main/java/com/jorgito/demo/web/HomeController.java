@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.jorgito.demo.modelo.Usuario;
 
 @Controller
-public class MenuController {
+public class HomeController {
 
     @GetMapping("/app/home")
     public String mostrarMenu(
@@ -18,7 +18,7 @@ public class MenuController {
 
         model.addAttribute("usuarioActual", usuarioActual);
 
-        return "home.html";
+        return  "redirect:/app/home";
 
     }
 

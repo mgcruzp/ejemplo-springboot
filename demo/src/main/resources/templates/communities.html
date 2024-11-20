@@ -74,35 +74,10 @@
 <!-- Botón con formulario estándar -->
 <div style="display: flex; align-items: center; gap: 10px;">
   <form action="/unirme" method="post" style="margin: 0;">
+    <input type="hidden" name="nombreComunidad" value="${comunidad.nombre}">
     <button type="submit" class="w3-button w3-purple w3-large">Unirme!</button>
   </form>
   <a href="#" class="w3-button w3-light-grey w3-large">❤️</a>
 </div>
-
-<!-- Opción con JavaScript y AJAX -->
-<div style="display: flex; align-items: center; gap: 10px; margin-top: 20px;">
-  <button onclick="unirmeAJAVEX()" class="w3-button w3-purple w3-large">Unirme! (AJAX)</button>
-  <a href="#" class="w3-button w3-light-grey w3-large">❤️</a>
-</div>
-
-<!-- JavaScript para la opción AJAX -->
-<script>
-  function unirmeAJAVEX() {
-    fetch('/unirme', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
-    })
-    .then(response => {
-      if (response.ok) {
-        // Mostrar mensaje de éxito
-        document.getElementById('success-message').style.display = 'block';
-      } else {
-        alert('Ocurrió un error al intentar unirte al grupo.');
-      }
-    })
-    .catch(error => console.error('Error:', error));
-  }
-</script>
-
 </body>
 </html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>U-LIFE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    body, h1, h2, h3, h4, h5 { font-family: "Poppins", sans-serif; }
+    body { font-size: 16px; }
+    #content-area {
+      margin-left: 340px;
+      margin-right: 40px;
+      margin-top: 50px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body onload="loadContent('home.html')">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-purple w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Cerrar Menú</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>U-LIFE</b></h3>
+  </div>
+  <div class="w3-bar-block" id="sidebar-options">
+    <!-- Default sidebar options -->
+    <a href="#" onclick="loadContent('home.html')" class="w3-bar-item w3-button w3-hover-white">Inicio</a>
+    <a href="#" onclick="loadContent('login.html')" class="w3-bar-item w3-button w3-hover-white">Iniciar Sesión</a>
+  </div>
+</nav>
+
+<!-- Content Area -->
+<div id="content-area" class="w3-main">
+  <!-- Initial content here -->
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Script to load content without reloading the page
+function loadContent(page) {
+  fetch(page)
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById("content-area").innerHTML = html;
+      if (page === 'login.html' || page === 'register.html') {
+        document.querySelector('form').addEventListener('submit', (e) => {
+          e.preventDefault(); // Prevent default form submission
+          updateSidebarForLoggedInUser(); // Update sidebar on login/register
+          loadContent('home.html'); // Redirect to home or main content after login/register
+        });
+      }
+    });
+}
+
+// Function to update sidebar after login/register
+function updateSidebarForLoggedInUser() {
+  document.getElementById("sidebar-options").innerHTML = `
+    <a href="#" onclick="loadContent('home.html')" class="w3-bar-item w3-button w3-hover-white">Inicio</a>
+    <a href="#" onclick="loadContent('communities.html')" class="w3-bar-item w3-button w3-hover-white">Comunidades</a>
+    <a href="#" onclick="loadContent('publications.html')" class="w3-bar-item w3-button w3-hover-white">Publicaciones</a>
+    <a href="#" onclick="logout()" class="w3-bar-item w3-button w3-hover-white">Cerrar Sesión</a>
+    <a href="#" onclick="loadContent('settings.html')" class="w3-bar-item w3-button w3-hover-white">Ajustes</a>
+  `;
+}
+
+// Function to log out and reset sidebar
+function logout() {
+  document.getElementById("sidebar-options").innerHTML = `
+    <a href="#" onclick="loadContent('home.html')" class="w3-bar-item w3-button w3-hover-white">Inicio</a>
+    <a href="#" onclick="loadContent('login.html')" class="w3-bar-item w3-button w3-hover-white">Iniciar Sesión</a>
+  `;
+  loadContent('home.html'); // Redirect to home page
+}
+</script>
+
+</body>
+</html>

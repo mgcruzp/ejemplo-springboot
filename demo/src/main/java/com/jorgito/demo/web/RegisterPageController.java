@@ -49,9 +49,9 @@ public class RegisterPageController {
         model.addAttribute("registerForm", registerForm);
 
         if (resultado == true)
-            return "login.html";
+        return "redirect:/app/login";
         else 
-            return "register.html";
+        return "redirect:/app/register";
     }
 
 }

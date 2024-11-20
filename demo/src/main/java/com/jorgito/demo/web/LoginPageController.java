@@ -73,7 +73,7 @@ public class LoginPageController {
             model.addAttribute("loginActual", usuarioActual != null ? usuarioActual.getNombre() : "Extraño");
     
             // muestras home
-            return "redirect:/app/home";
+            return "redirect:/app/index";
             
         } catch (Exception e) {
 
