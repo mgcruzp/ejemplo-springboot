@@ -42,7 +42,7 @@ public class PublicacionesServicesTest {
             sistemaServices.agregarPublicacion("desc Publi");
             // ok
         } catch (Exception e) {
-            fail("no dejo grabar con todos los datos bien");
+            fail("no dejo grabar con todos los datos bien", e);
         }
     }
 

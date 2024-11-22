@@ -1,5 +1,6 @@
 package com.jorgito.demo.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,8 +40,9 @@ public class Usuario {
     @Column(unique = true, nullable = false)
     private int telefono;
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-    private List<Inscripciones> inscripciones;
+    private List<Inscripciones> inscripciones =new ArrayList();
 
     @OneToMany(mappedBy = "autor", cascade = CascadeType.REMOVE)
     private List<Publicacion> publicaciones;

@@ -1,5 +1,7 @@
 package com.jorgito.demo.modelo;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -22,7 +24,7 @@ public class Comunidad {
     private long id;
 
     @Column(unique = false, nullable = false)
-    private String fecha ;
+    private LocalDateTime fecha= LocalDateTime.now(); ;
 
     @Column(unique = true, nullable = false)
     private String nombre;
@@ -31,8 +33,9 @@ public class Comunidad {
     private String descripcion;
 
     
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @OneToMany(mappedBy = "comunidad", cascade = CascadeType.REMOVE)
-    private List<Inscripciones> inscritos;
+    private List<Inscripciones> inscritos= new ArrayList();
 
     @OneToMany(mappedBy = "comunidad", cascade = CascadeType.REMOVE)
     private List<Publicacion> publicaciones;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.AbstractList;
 
 import com.jorgito.demo.modelo.Comentario;
 import com.jorgito.demo.modelo.Comunidad;
@@ -63,8 +64,10 @@ public class SistemaServices {
     {
         try {
             List<Inscripciones> inscripciones = usuarioActivo.getInscripciones();
+            
             Inscripciones i = comunidadServices.crearComunidad(nombre,descripcion, usuarioActivo);
             inscripciones.add(i);
+            usuarioActivo.setInscripciones(inscripciones);
             usuarioRepository.save(usuarioActivo);
         } catch (Exception e) {
             throw new JorgitoException( "Error al crear una comunidad", e);

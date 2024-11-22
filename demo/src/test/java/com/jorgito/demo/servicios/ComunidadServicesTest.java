@@ -70,7 +70,7 @@ public class ComunidadServicesTest {
     public void crearComunidadSinProblemas() {
         try {
             sistemaServices.registrarse("jaime", 20, "jaime@ejemplo.com", "secret");
-            //sistemaServices.crearComunidad("deassa", "dea");
+            sistemaServices.crearComunidad("deassa", "dea");
              // OK
             
         } catch (Exception e) {
