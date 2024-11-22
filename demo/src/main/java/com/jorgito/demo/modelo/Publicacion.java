@@ -1,5 +1,6 @@
 package com.jorgito.demo.modelo;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -24,7 +25,7 @@ public class Publicacion {
     private String informacion;
 
     @Column(unique = false, nullable = false)
-    private String fecha ;
+    private LocalDateTime fecha= LocalDateTime.now();
     
     @ManyToOne
     private Usuario autor;

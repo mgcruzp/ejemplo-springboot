@@ -44,14 +44,16 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     private List<Inscripciones> inscripciones =new ArrayList();
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @OneToMany(mappedBy = "autor", cascade = CascadeType.REMOVE)
-    private List<Publicacion> publicaciones;
+    private List<Publicacion> publicaciones=new ArrayList();
 
     @OneToMany(mappedBy = "dadorLike", cascade = CascadeType.REMOVE)
     private List<LikePublicaciones> likesDados;
     
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @OneToMany(mappedBy = "autor", cascade = CascadeType.REMOVE)
-    private List<Comentario> comentarios;
+    private List<Comentario> comentarios = new ArrayList();
 
     @OneToMany(mappedBy = "usuario")
     private List<LikeComentarios> likesComentarios;

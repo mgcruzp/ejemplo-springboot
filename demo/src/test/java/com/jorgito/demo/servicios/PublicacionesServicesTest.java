@@ -45,5 +45,18 @@ public class PublicacionesServicesTest {
             fail("no dejo grabar con todos los datos bien", e);
         }
     }
+    @Test
+    void PublicarSinDescripcion() {
+        try {
+            sistemaServices.registrarse("jaime", 20, "jaime@ejemplo.com", "secret");
+            sistemaServices.crearComunidad("nombre" ,"desc");
+            sistemaServices.agregarPublicacion("");
+            fail("se guardo con descripcion vacia");
+            
+        } catch (Exception e) {
+            // ok
+        }
+    }
+
 
 }

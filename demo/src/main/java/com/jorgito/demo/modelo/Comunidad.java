@@ -24,7 +24,7 @@ public class Comunidad {
     private long id;
 
     @Column(unique = false, nullable = false)
-    private LocalDateTime fecha= LocalDateTime.now(); ;
+    private LocalDateTime fecha= LocalDateTime.now(); 
 
     @Column(unique = true, nullable = false)
     private String nombre;

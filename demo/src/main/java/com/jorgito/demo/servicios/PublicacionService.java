@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jorgito.demo.modelo.Comentario;
 import com.jorgito.demo.modelo.Comunidad;
@@ -24,6 +25,7 @@ public class PublicacionService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
+    @Autowired
     ComentarioService comentarioService;
     
      Publicacion publicar(Usuario autor, String informacion, Comunidad comunidad) 
@@ -45,10 +47,7 @@ public class PublicacionService {
             // Define el formato deseado
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         
-            // Convierte LocalDateTime a String
-             String fechaFormateada = fechaActual.format(formatter);
-        
-            publicacion.setFecha(fechaFormateada);
+            publicacion.setFecha(fechaActual);
             
             publicacionRepository.save(publicacion);
             return publicacion;
