@@ -20,7 +20,7 @@ import com.jorgito.demo.repositorio.InscripcionesRepository;
         @Autowired
         InscripcionesRepository inscripcionesRepository;
 
-        Comunidad crearComunidad(String nombre, String descripcion, Usuario creador) 
+        Inscripciones crearComunidad(String nombre, String descripcion, Usuario creador) 
         throws JorgitoException 
     {
         try {
@@ -42,7 +42,11 @@ import com.jorgito.demo.repositorio.InscripcionesRepository;
     
 
             comunidadRepository.save(comunidad);
-            return comunidad;
+            Inscripciones inscripciones = new Inscripciones();
+            inscripciones.setUsuario(creador);
+            inscripciones.setComunidad(comunidad);
+            inscripcionesRepository.save(inscripciones);
+            return inscripciones;
 
         } catch (Exception e) {
             throw new JorgitoException("Error al crear la comunidad", e);
@@ -83,10 +87,10 @@ import com.jorgito.demo.repositorio.InscripcionesRepository;
                 throw new JorgitoException("No hay comunidad con dicho nombre");
 
             //2. verificar si la comunidad hace parte del usuario
-            Inscripciones inscripciones = new Inscripciones();
+            
             
             Comunidad c = comunidadRepository.findByNombre(nombreC);
-
+            Inscripciones inscripciones = new Inscripciones();
             inscripciones.setUsuario(usuario);
             inscripciones.setComunidad(c);
             inscripcionesRepository.save(inscripciones);

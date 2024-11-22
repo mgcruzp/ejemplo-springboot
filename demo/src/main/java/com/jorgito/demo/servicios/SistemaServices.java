@@ -58,7 +58,20 @@ public class SistemaServices {
         usuarioActivo=usuarioServices.cerrarSesion();
     }
 
-
+    void crearComunidad(String nombre, String descripcion)
+    throws JorgitoException
+    {
+        try {
+            List<Inscripciones> inscripciones = usuarioActivo.getInscripciones();
+            Inscripciones i = comunidadServices.crearComunidad(nombre,descripcion, usuarioActivo);
+            inscripciones.add(i);
+            usuarioRepository.save(usuarioActivo);
+        } catch (Exception e) {
+            throw new JorgitoException( "Error al registrarse", e);
+        }
+        
+    }
+    
     void entrarAComunidad(String nombreC)
     throws JorgitoException
     {
