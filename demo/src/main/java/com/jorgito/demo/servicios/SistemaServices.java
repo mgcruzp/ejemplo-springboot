@@ -18,16 +18,16 @@ public class SistemaServices {
     Usuario usuarioActivo;
     Comunidad comunidadActiva;
     
-    
+    @Autowired
     UsuarioServices usuarioServices;
   
-    
+    @Autowired
     ComunidadServices comunidadServices;
 
     @Autowired
     UsuarioRepository usuarioRepository;
      
-    
+    @Autowired
     PublicacionService publicacionService;
 
 
@@ -46,7 +46,7 @@ public class SistemaServices {
      throws JorgitoException
      {
         try {
-            usuarioActivo= usuarioServices.registrarse(nombre, edad, email, contra);
+            usuarioActivo = usuarioServices.registrarse(nombre, edad, email, contra);
         } catch (Exception e) {
             throw new JorgitoException( "Error al registrarse", e);
         }
@@ -67,7 +67,7 @@ public class SistemaServices {
             inscripciones.add(i);
             usuarioRepository.save(usuarioActivo);
         } catch (Exception e) {
-            throw new JorgitoException( "Error al registrarse", e);
+            throw new JorgitoException( "Error al crear una comunidad", e);
         }
         
     }
@@ -81,7 +81,7 @@ public class SistemaServices {
             inscripciones.add(i);
             usuarioRepository.save(usuarioActivo);
         } catch (Exception e) {
-            throw new JorgitoException( "Error al registrarse", e);
+            throw new JorgitoException( "Error al entrar a comunidad", e);
         }
         
     }
@@ -97,7 +97,7 @@ public class SistemaServices {
 
             
         } catch (Exception e) {
-            throw new JorgitoException( "Error al registrarse", e);
+            throw new JorgitoException( "Error al seleccionar comunidad", e);
         }
         
     }

@@ -72,7 +72,7 @@ public class UsuarioServices {
 
             // 5. Guarda el nuevo usuario
 
-            Usuario user =new Usuario();
+            Usuario user = new Usuario();
             
             user.setContra(contra);
             user.setNombre(nombre);
@@ -84,7 +84,7 @@ public class UsuarioServices {
 
 
         } catch (Exception e) {
-            throw new JorgitoException("No se pudo grabar", e);
+            throw new JorgitoException("No se pudo grabar el usuario", e);
         }
         
     }

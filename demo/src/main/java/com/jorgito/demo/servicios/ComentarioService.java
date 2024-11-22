@@ -4,13 +4,15 @@ import com.jorgito.demo.modelo.Publicacion;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.jorgito.demo.modelo.Comentario;
 import com.jorgito.demo.modelo.Usuario;
 import com.jorgito.demo.repositorio.ComentarioRepository;
 
 public class ComentarioService {
 
-    
+    @Autowired
     ComentarioRepository comentarioRepository;
     //crear comentario
 

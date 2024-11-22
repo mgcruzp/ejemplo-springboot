@@ -18,6 +18,9 @@ public class UsuariosServicesTest {
     SistemaServices sistemaServices;
 
     @Autowired
+    UsuarioServices usuarioServices;
+
+    @Autowired
     UsuarioRepository usuarioRepository;
 
     @BeforeEach
@@ -31,7 +34,7 @@ public class UsuariosServicesTest {
             sistemaServices.registrarse("jaime", 20, "jaime@ejemplo.com", "secret");
             // ok
         } catch (Exception e) {
-            fail("no dejo grabar con todos los datos bien");
+            fail("no dejo grabar con todos los datos bien",e);
         }
     }
 
