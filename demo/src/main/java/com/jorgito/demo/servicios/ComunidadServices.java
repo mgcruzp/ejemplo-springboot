@@ -4,6 +4,7 @@ package com.jorgito.demo.servicios;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jorgito.demo.modelo.Comunidad;
 import com.jorgito.demo.modelo.Inscripciones;
@@ -12,7 +13,8 @@ import com.jorgito.demo.modelo.Usuario;
 import com.jorgito.demo.repositorio.ComunidadRepository;
 import com.jorgito.demo.repositorio.InscripcionesRepository;
 
-    public class ComunidadServices {
+@Service
+public class ComunidadServices {
 
         @Autowired
         ComunidadRepository comunidadRepository;
