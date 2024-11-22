@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -33,7 +34,7 @@ public class Publicacion {
     @ManyToOne
     private Comunidad comunidad;
 
-    @OneToMany(mappedBy = "publicacion", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "publicacion", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Comentario> comentarios;
 
     @OneToMany(mappedBy = "likeado", cascade = CascadeType.REMOVE)

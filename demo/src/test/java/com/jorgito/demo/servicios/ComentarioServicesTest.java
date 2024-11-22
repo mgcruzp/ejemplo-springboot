@@ -50,8 +50,12 @@ public class ComentarioServicesTest {
     @Test
     public void crearComentarioVacio() {
         try {
-            sistemaServices.registrarse(null,20, "otro@ejemplo.com", "secret");
-            fail("Dejo guardar sin nombre");
+            sistemaServices.registrarse("jaime", 20, "jaime@ejemplo.com", "secret");
+            sistemaServices.crearComunidad("nombre" ,"desc");
+            sistemaServices.agregarPublicacion("descPubli");
+            Publicacion p =publicacionRepository.findById(1);
+            sistemaServices.agregarComentario(p, "");
+            fail("Dejo guardar sin descripcion ");
 
         } catch (Exception e) {
             // OK
