@@ -10,7 +10,7 @@ import com.jorgito.demo.modelo.Usuario;
 
 @Controller
 public class IndexController {
-    @GetMapping("/app/index")
+    @GetMapping("/")
     public String mostrarMenu(
         Model model,
         @SessionAttribute(name = "usuario", required = false) Usuario usuarioActual // usuario actual en la sesión
@@ -18,7 +18,7 @@ public class IndexController {
 
         model.addAttribute("usuarioActual", usuarioActual);
 
-        return  "redirect:/app/index";
+        return  "index";
 
     }
 

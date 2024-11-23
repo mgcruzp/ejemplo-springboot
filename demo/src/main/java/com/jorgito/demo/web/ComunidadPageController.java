@@ -38,7 +38,7 @@ public class ComunidadPageController {
         model.addAttribute("usuarioActual", usuarioActual);
         model.addAttribute("comunidades", comunidades);
 
-        return "communities.html";
+        return "communities";
     }
 
 
