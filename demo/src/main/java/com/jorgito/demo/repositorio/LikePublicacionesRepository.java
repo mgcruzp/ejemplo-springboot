@@ -5,8 +5,6 @@ import org.springframework.stereotype.Repository;
 
 
 import com.jorgito.demo.modelo.LikePublicaciones;
-import com.jorgito.demo.modelo.Publicacion;
-import com.jorgito.demo.modelo.Usuario;
 
 @Repository
 public interface LikePublicacionesRepository extends CrudRepository<LikePublicaciones, Long> {

@@ -1,41 +1,98 @@
-<!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 
-Hola 
-<span th:text="${nombre}" /> 
-<span th:text="${apellido}" />
-!!
+<head>
+    <title>Iniciar Sesión - U-LIFE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif;
+        }
 
-<br/>
-<hr/>
+        body {
+            font-size: 16px;
+        }
 
-<ul>
-    <li th:each="item: ${numeros}">
-        <span th:text="${item}" />
-    </li>
-</ul>
+        #content-area {
+            margin-left: 340px;
+            margin-right: 40px;
+            margin-top: 50px;
+            padding: 20px;
+        }
 
-<hr />
+        .login-form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
 
-<form action="#" th:action="@{/app/login}" 
-        method="post"
-        th:object="${loginForm}">  <!-- Model Attribute -->
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-    login: 
-    <input type="text" name="login" 
-            th:field="*{login}" /> <!-- atributo -->
-    <br/>
+        .login-form button {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-    password
-    <input type="password" name="password" 
-            th:field="*{password}"/>
-    <br/>
+        .login-form button:hover {
+            background-color: #9c27b0;
+        }
 
-    <input type="reset" value="borrar" />
-    <input type="submit" value="login" />
-</form>
+        .register-link {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            color: #6a1b9a;
+        }
 
-<hr/>
+        .register-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
 
+<body>
+    <!-- Contenido principal -->
+    <div id="content-area" class="w3-main">
+        <h1 class="w3-xxxlarge w3-text-purple"><b>Iniciar Sesión</b></h1>
+        <hr style="width:50px;border:5px solid purple" class="w3-round">
 
-</html>
+        <!-- Formulario de inicio de sesión -->
+        <div class="login-form">
+            <p>Hola <span th:text="${loginActual}"></span>
+            <p/>
+            <br/>
+            
+            <form action="#" th:action="@{/app/login}" method="post" th:object="${loginForm}">
+                <label for="email"><b>Correo Electrónico</b></label>
+                <input type="text" id="login" name="login" th:field="*{login}" placeholder="Ingresa tu correo" required>
+
+                <label for="password"><b>Contraseña</b></label>
+                <input type="password" id="password" name="password" th:field="*{password}" placeholder="Ingresa tu contraseña" required>
+
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+
+            <p class="register-link">¿No tienes una cuenta? 
+                <a href="/app/register" class="w3-bar-item w3-button w3-hover-white">Registrarse</a>
+            </p>
+        </div>
+    </body>
+
+    </html>

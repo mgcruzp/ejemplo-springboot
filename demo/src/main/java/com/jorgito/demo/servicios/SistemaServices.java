@@ -32,22 +32,24 @@ public class SistemaServices {
     PublicacionService publicacionService;
 
 
-    void inicioSesion(String email, String contra) 
+    public Usuario inicioSesion(String email, String contra) 
         throws JorgitoException
     {
         try {
             usuarioActivo = usuarioServices.iniciarSesion(email, contra);
+            return usuarioActivo;
         } catch (Exception e) {
             throw new JorgitoException( "Error al iniciar sesion", e);
         }
 
     }
 
-    void registrarse( String nombre, int edad,  String email, String contra )
+    public Boolean registrarse( String nombre, int edad,  String email, String contra )
      throws JorgitoException
      {
         try {
-            usuarioActivo = usuarioServices.registrarse(nombre, edad, email, contra);
+            usuarioActivo= usuarioServices.registrarse(nombre, edad, email, contra);
+            return true;
         } catch (Exception e) {
             throw new JorgitoException( "Error al registrarse", e);
         }
@@ -75,7 +77,7 @@ public class SistemaServices {
         
     }
     
-    void entrarAComunidad(String nombreC)
+    public Boolean entrarAComunidad(String nombreC)
     throws JorgitoException
     {
         try {
@@ -83,6 +85,7 @@ public class SistemaServices {
             Inscripciones i = comunidadServices.entrarAComunidad(nombreC, usuarioActivo);
             inscripciones.add(i);
             usuarioRepository.save(usuarioActivo);
+            return true;
         } catch (Exception e) {
             throw new JorgitoException( "Error al entrar a comunidad", e);
         }
@@ -105,38 +108,44 @@ public class SistemaServices {
         
     }
 
-    void editarNombre(String nuevoNombre){
+    public Boolean editarNombre(String nuevoNombre){
 
         usuarioActivo =usuarioServices.editarNombre( usuarioActivo , nuevoNombre);
+        return true;
     }
 
-    void editarApellido( String apellido){
+    public Boolean editarApellido( String apellido){
 
         usuarioActivo =usuarioServices.editarApellido( usuarioActivo , apellido);
+        return true;
     }
-    void editarTelefono( int telefono){
+    public Boolean editarTelefono( String telefono){
 
         usuarioActivo =usuarioServices.editarTelefono( usuarioActivo , telefono);
+        return true;
     }
-    void editarContra(String contra, String contraActual)
+    public Boolean editarContra(String contra, String contraActual)
         throws JorgitoException
     {
         usuarioActivo =usuarioServices.editarContra( usuarioActivo , contra, contraActual);
+        return true;
         
     }
 
 
-    void editarEdad( int edad){
+    public Boolean editarEdad( int edad){
 
         usuarioActivo=usuarioServices.editarEdad( usuarioActivo , edad);
+        return true;
     }
     
 
 
-    void editarEmail( String email)
+    public Boolean editarEmail( String email)
         throws JorgitoException
     {
         usuarioActivo =usuarioServices.editarEmail( usuarioActivo , email);
+        return true;
     }
 
     void agregarPublicacion(String informacion)    

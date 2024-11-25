@@ -34,11 +34,11 @@ public class Usuario {
     @Column(unique = false, nullable = true)
     private String apellido;
 
-    
+   
     private int edad;
 
-    @Column(unique = true, nullable = false)
-    private int telefono;
+    @Column(unique = true, nullable = true) // NOT NULL
+    private String telefono;
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
@@ -107,12 +107,12 @@ public class Usuario {
         this.edad = edad;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int teléfono) {
-        this.telefono = teléfono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public List<Inscripciones> getInscripciones() {

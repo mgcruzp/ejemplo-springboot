@@ -16,11 +16,11 @@ import com.jorgito.demo.repositorio.InscripcionesRepository;
 @Service
 public class ComunidadServices {
 
-        @Autowired
-        ComunidadRepository comunidadRepository;
+    @Autowired
+    ComunidadRepository comunidadRepository;
 
-        @Autowired
-        InscripcionesRepository inscripcionesRepository;
+    @Autowired
+    InscripcionesRepository inscripcionesRepository;
 
         Inscripciones crearComunidad(String nombre, String descripcion, Usuario creador) 
         throws JorgitoException 

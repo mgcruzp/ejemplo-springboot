@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Comunidades</title>
+  <style>
+    .center-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .icon-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .icon-button img {
+      width: 48px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mensaje flash opcional -->
+<div class="w3-panel w3-green w3-padding" style="display: none;" id="success-message">
+  <p>¡Te has unido exitosamente al grupo JAVEX!</p>
+</div>
+
+<!-- Encabezado de la página -->
+<h1 class="w3-xxxlarge w3-text-purple"><b>Comunidades</b></h1>
+<hr style="width:50px;border:5px solid purple" class="w3-round">
+<p>Únete a nuestras comunidades para aprender, colaborar y crecer juntos. Contamos con espacios para el estudio, actividades sociales, y muchos más.</p>
+<hr style="width:50px;border:5px solid purple" class="w3-round">
+
+
+
+<p>Hola 
+  <span th:text="${usuarioActual.nombre}"></span>
+  !!
+</p>
+
+<hr/>
+
+<ul th:each="comunidad : ${comunidades}">
+  <li> 
+    <span th:text="${comunidad.nombre}"></span>
+    El enlace tendría 
+    <span th:text="${comunidad.id}"></span>
+    - 
+    <span th:text="${usuarioActual.id}"></span>
+  </li>
+</ul>
+
+<hr/>
+
+<!-- Comunidad JAVEX -->
+<h2 class="w3-text-purple"><b>JAVEX - Semillero de Robótica</b></h2>
+<p>
+  Fundado en 2015, el Semillero de Robótica JAVEX - Pontificia Universidad Javeriana, está integrado por estudiantes apasionados por la tecnología y la innovación. Compiten activamente en la VEX Robotics Competition tanto a nivel nacional como internacional, destacándose por su creatividad, perseverancia y habilidades técnicas de primer nivel.
+</p>
+<p>
+  Entre sus logros más importantes se incluyen el 7° puesto mundial en 2019, el premio al robot más creativo y 4° lugar en 2016. Además, han sido campeones nacionales en cinco ocasiones y han obtenido un subcampeonato. Con un enfoque constante en la superación de desafíos y el trabajo en equipo, el equipo JAVEX ha demostrado un compromiso excepcional y un fuerte espíritu colaborativo en cada una de sus competencias.
+</p>
+<p>
+  <b>Ubicación:</b> Ed. José Gabriel Maldonado (12) - Piso 13, Vex Robotics<br>
+  <b>Sitio web:</b> <a href="https://linktr.ee/javex" target="_blank">https://linktr.ee/javex</a><br>
+  <b>Instagram:</b> <a href="https://www.instagram.com/javexrobotics/?hl=es" target="_blank">javexrobotics</a>
+</p>
+
+<!-- Botón con formulario estándar -->
+<div style="display: flex; align-items: center; gap: 10px;">
+  <form action="/unirme" method="post" style="margin: 0;">
+    <input type="hidden" name="nombreComunidad" value="${comunidad.nombre}">
+    <button type="submit" class="w3-button w3-purple w3-large">Unirme!</button>
+  </form>
+  <a href="#" class="w3-button w3-light-grey w3-large">❤️</a>
+</div>
+</body>
+</html>
